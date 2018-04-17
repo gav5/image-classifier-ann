@@ -14,6 +14,7 @@ import threshold from '../lib/threshold'
 import trainingRate from '../lib/trainingRate'
 import lightDarkLabel from '../lib/lightDarkLabel'
 import isPixelLight from '../lib/isPixelLight'
+import formatWeight from '../lib/formatWeight'
 import { times, constant, last, map, clone, concat, reduce, result } from 'lodash'
 
 import {
@@ -40,7 +41,6 @@ export default class extends Component {
         input: val,
         correct: isImageLight(val) ? +1 : -1
       })
-      console.log(`newRow: ${newRow.weights}`)
       return concat(acc, [newRow])
     }, [])
 
@@ -164,7 +164,19 @@ export default class extends Component {
                 )}
                 {this.isStageTraining(this.state.stage) &&
                   <div>
+                    <Header>Training Table</Header>
                     <TrainingTable round={this.state.rounds[this.state.stage-1]} />
+                    <Header>Weights</Header>
+                    <Table>
+                      <Table.Body>
+                        <Table.Row>
+                          {map(last(this.state.rounds[this.state.stage-1]).newWeights, (w)=> (
+                            <Table.Cell textAlign='center'>{formatWeight(w)}</Table.Cell>
+                          ))}
+                        </Table.Row>
+                      </Table.Body>
+                    </Table>
+                    <Header>Test Results</Header>
                     <Grid columns={2}>
                       {map(this.state.results[this.state.stage-1], (x, i)=> (
                         <Grid.Column key={i}>
