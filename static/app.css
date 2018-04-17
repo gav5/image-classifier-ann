@@ -1,0 +1,5 @@
+.no-top-pad {
+  /* csslint important:false */
+  padding-top: 0.25rem !important;
+  /* csslint important:true */
+}
