@@ -1,3 +1,6 @@
+// components/TrainingTable.js
+// by Gavin Smith
+// CS4242 Assignment 04
 import { Component } from 'react'
 import { Table } from 'semantic-ui-react'
 import SourceImageGrid from '../components/SourceImageGrid'

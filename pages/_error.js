@@ -1,3 +1,6 @@
+// pages/_error.js
+// by Gavin Smith
+// CS4242 Assignment 04
 import { Component } from 'react'
 
 export default class Error extends Component {

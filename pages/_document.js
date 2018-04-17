@@ -1,3 +1,6 @@
+// pages/_document.js
+// by Gavin Smith
+// CS4242 Assignment 04
 import Document, { Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {

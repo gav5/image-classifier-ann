@@ -1,3 +1,6 @@
+// components/App.js
+// by Gavin Smith
+// CS4242 Assignment 04
 import { Component } from 'react'
 
 function itemClasses(href, router) {
