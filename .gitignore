@@ -1,3 +1,6 @@
+# DS Stores are annoying
+.DS_Store
+
 # Logs
 logs
 *.log
