@@ -1,6 +1,6 @@
 // components/App.js
 // by Gavin Smith
-// CS4242 Assignment 04
+// CS4242 Assignment 05
 import { Component } from 'react'
 
 function itemClasses(href, router) {
@@ -13,7 +13,7 @@ function itemClasses(href, router) {
 
 function App({children, router}) {
   return (
-    <div>
+    <div className='app-ctr'>
       {children}
     </div>
   )

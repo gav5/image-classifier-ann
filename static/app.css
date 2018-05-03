@@ -3,3 +3,8 @@
   padding-top: 0.25rem !important;
   /* csslint important:true */
 }
+
+.app-ctr {
+  padding: 10px;
+  width: 100%;
+}

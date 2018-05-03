@@ -1,9 +1,10 @@
 // components/SourceImageGrid.js
 // by Gavin Smith
-// CS4242 Assignment 04
+// CS4242 Assignment 05
 import { Component } from 'react'
 import { Table } from 'semantic-ui-react'
 import threshold from '../lib/threshold'
+import { nth } from 'lodash'
 
 export default ({value}) => (
   <Table celled textAlign="center" compact>
@@ -14,7 +15,7 @@ export default ({value}) => (
             <Table.Cell
               key={x}
               content={' '}
-              active={value[x + (y * 2)] <= threshold}
+              active={nth(value, x + (y * 2)) <= threshold}
             />
           ))}
         </Table.Row>

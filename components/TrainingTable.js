@@ -1,6 +1,6 @@
 // components/TrainingTable.js
 // by Gavin Smith
-// CS4242 Assignment 04
+// CS4242 Assignment 05
 import { Component } from 'react'
 import { Table } from 'semantic-ui-react'
 import SourceImageGrid from '../components/SourceImageGrid'
@@ -14,14 +14,34 @@ export default ({ round }) => (
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell/>
-        {times(4, (i)=> (
-          <Table.HeaderCell key={i}>W{i+1}</Table.HeaderCell>
+        {times(2, (stageNumber)=> (
+          <div key={stageNumber}>
+            {times(4, (nodeNumber)=> (
+              <div key={nodeNumber}>
+                {times(4, (weightNumber)=> (
+                  <Table.HeaderCell key={nodeNumber}>
+                    W{stageNumber}.{nodeNumber}.{nodeNumber}
+                  </Table.HeaderCell>
+                ))}
+              </div>
+            ))}
+          </div>
         ))}
         <Table.HeaderCell content='State' />
         <Table.HeaderCell content='Actual' />
         <Table.HeaderCell content='Out' />
-        {times(4, (i)=> (
-          <Table.HeaderCell key={i}>ΔW{i+1}</Table.HeaderCell>
+        {times(2, (stageNumber)=> (
+          <div key={stageNumber}>
+            {times(4, (nodeNumber)=> (
+              <div key={nodeNumber}>
+                {times(4, (weightNumber)=> (
+                  <Table.HeaderCell key={nodeNumber}>
+                    ΔW{stageNumber}.{nodeNumber}.{nodeNumber}
+                  </Table.HeaderCell>
+                ))}
+              </div>
+            ))}
+          </div>
         ))}
       </Table.Row>
     </Table.Header>
@@ -29,16 +49,38 @@ export default ({ round }) => (
       {map(round, (val, i) => (
         <Table.Row key={i}>
           <Table.Cell>T{i}</Table.Cell>
-          {map(val.weights, (w, j)=> (
-            <Table.Cell content={formatWeight(w)} key={j} />
+          {map(val, (stage, stageNumber)=> (
+            <div key={stageNumber}>
+              {map(stage, (node, nodeNumber)=> (
+                <div key={nodeNumber}>
+                  {map(node.weights, (w, weightNumber)=> (
+                    <Table.Cell
+                      content={formatWeight(w)}
+                      key={weightNumber}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
           ))}
           <Table.Cell>
             <SourceImageGrid value={val.input} />
           </Table.Cell>
           <Table.Cell content={lightDarkLabel(val.correct)} />
           <Table.Cell content={lightDarkLabel(val.output)} />
-          {map(val.deltas, (d, j)=> (
-            <Table.Cell content={formatWeight(d)} key={j} />
+          {map(val, (stage, stageNumber)=> (
+            <div key={stageNumber}>
+              {map(stage, (node, nodeNumber)=> (
+                <div key={nodeNumber}>
+                  {map(node.deltas, (d, deltaNumber)=> (
+                    <Table.Cell
+                      content={formatWeight(d)}
+                      key={deltaNumber}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
           ))}
         </Table.Row>
       ))}
